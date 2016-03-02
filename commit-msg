@@ -2,7 +2,7 @@
 message_file = ARGV[0]
 message = File.read(message_file)
 
-$regex = /^(fix|add|refactor)\(.*\):.{1,50}^^.{50,}^^(JIRA (.*\d|none))/m
+$regex = /(^Merge|Fixup)|(^(fix|add|refactor)\(.*\):.{1,50}^^.{50,}^^(JIRA (.*\d|none)))/m
 
 if !$regex.match(message) 
    puts "Your message is not formatted correct. Please begin format your message like:\naction(feature): Less than 50 characters\n\nMore than 50 characters\n\nJIRA ticket number or 'none'"
